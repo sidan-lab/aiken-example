@@ -1,0 +1,69 @@
+{
+  "preamble": {
+    "title": "sidan-lab/aiken-example",
+    "description": "Aiken contracts for project 'sidan-lab/aiken-example'",
+    "version": "0.0.0",
+    "plutusVersion": "v2",
+    "compiler": {
+      "name": "Aiken",
+      "version": "v1.0.20-alpha+49bd4ba"
+    },
+    "license": "Apache-2.0"
+  },
+  "validators": [
+    {
+      "title": "always_succeed.always_succeed",
+      "redeemer": {
+        "title": "_redeemer",
+        "schema": {
+          "$ref": "#/definitions/Data"
+        }
+      },
+      "parameters": [
+        {
+          "title": "owner",
+          "schema": {
+            "$ref": "#/definitions/aiken~1transaction~1credential~1Credential"
+          }
+        }
+      ],
+      "compiledCode": "588b0100003232323232323222253330053253330063370e9000000899191919198008008011129998070008a5013232533300d3371e00400c29444cc010010004c044008dd718078009bac300c300d300d300d300d300d300d300d300d3007300c3007004375c6016002600a0082940c018dd50018a4c26cac460086ea80055cd2ab9d5573caae7d5d0aba201",
+      "hash": "e7f38676c36c68db9658097ba1e8a3a96140ef9493bd8040a95674cb"
+    }
+  ],
+  "definitions": {
+    "ByteArray": {
+      "dataType": "bytes"
+    },
+    "Data": {
+      "title": "Data",
+      "description": "Any Plutus data."
+    },
+    "aiken/transaction/credential/Credential": {
+      "title": "Credential",
+      "description": "A general structure for representing an on-chain `Credential`.\n\n Credentials are always one of two kinds: a direct public/private key\n pair, or a script (native or Plutus).",
+      "anyOf": [
+        {
+          "title": "VerificationKeyCredential",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "$ref": "#/definitions/ByteArray"
+            }
+          ]
+        },
+        {
+          "title": "ScriptCredential",
+          "dataType": "constructor",
+          "index": 1,
+          "fields": [
+            {
+              "$ref": "#/definitions/ByteArray"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
